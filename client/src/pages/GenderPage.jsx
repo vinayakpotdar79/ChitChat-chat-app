@@ -1,10 +1,10 @@
 const GenderCheckbox = ({ onCheckboxChange, selectedGender }) => {
 	return (
-		<div className="flex gap-4 justify-center mt-2">
+		<div className="flex gap-4 justify-center mt-4">
 			{/* Male */}
 			<label
 				className={`
-					group relative flex flex-col items-center justify-center
+					relative flex flex-col items-center justify-center
 					w-28 h-24 rounded-2xl cursor-pointer
 					border backdrop-blur-xl transition-all duration-300
 					${
@@ -17,7 +17,9 @@ const GenderCheckbox = ({ onCheckboxChange, selectedGender }) => {
 				<input
 					type="radio"
 					name="gender"
-					className="hidden"
+					value="male"
+					
+					className="sr-only"
 					checked={selectedGender === "male"}
 					onChange={() => onCheckboxChange("male")}
 				/>
@@ -35,7 +37,7 @@ const GenderCheckbox = ({ onCheckboxChange, selectedGender }) => {
 			{/* Female */}
 			<label
 				className={`
-					group relative flex flex-col items-center justify-center
+					relative flex flex-col items-center justify-center
 					w-28 h-24 rounded-2xl cursor-pointer
 					border backdrop-blur-xl transition-all duration-300
 					${
@@ -48,7 +50,9 @@ const GenderCheckbox = ({ onCheckboxChange, selectedGender }) => {
 				<input
 					type="radio"
 					name="gender"
-					className="hidden"
+					value="female"
+					required
+					className="sr-only"
 					checked={selectedGender === "female"}
 					onChange={() => onCheckboxChange("female")}
 				/>

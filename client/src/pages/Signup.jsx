@@ -50,8 +50,8 @@ const SignUp = () => {
 						<label className="label">
 							<span className="text-sm text-gray-300">Full Name</span>
 						</label>
-						<input
-							type="text"
+						<input 
+							type="text" required
 							placeholder="John Doe"
 							className="
 								w-full px-4 py-2
@@ -73,7 +73,7 @@ const SignUp = () => {
 						<label className="label">
 							<span className="text-sm text-gray-300">Username</span>
 						</label>
-						<input
+						<input required
 							type="text"
 							placeholder="johndoe"
 							className="
@@ -96,7 +96,7 @@ const SignUp = () => {
 						<label className="label text-sm text-gray-300">Password</label>
 
 						<div className="relative">
-							<input
+							<input required
 								type={showPassword ? "text" : "password"}
 								placeholder="••••••••"
 								className="
@@ -130,7 +130,7 @@ const SignUp = () => {
 						<label className="label">
 							<span className="text-sm text-gray-300">Confirm Password</span>
 						</label>
-						<input
+						<input required
 							type="password"
 							placeholder="••••••••"
 							className="

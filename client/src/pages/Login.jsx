@@ -36,7 +36,7 @@ const Login = () => {
 					{/* Username */}
 					<div>
 						<label className="label text-sm text-gray-300">Username</label>
-						<input
+						<input required
 							type="text"
 							placeholder="johndoe"
 							className="
@@ -56,7 +56,7 @@ const Login = () => {
 						<label className="label text-sm text-gray-300">Password</label>
 
 						<div className="relative">
-							<input
+							<input required
 								type={showPassword ? "text" : "password"}
 								placeholder="••••••••"
 								className="
