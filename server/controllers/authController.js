@@ -54,11 +54,12 @@ export const login=async(req,res)=>{
 		const { username, password } = req.body;
 		console.log(req.body)
 		const user = await User.findOne({ username });
-		const isPasswordCorrect = await bcrypt.compare(password, user.password);
 
 		if (!user ) {
 			return res.status(400).json({ message:"User Does not Exist." });
 		}
+		const isPasswordCorrect = await bcrypt.compare(password, user.password);
+
         if(!isPasswordCorrect){
             return res.status(400).json({ message:"Invalid Password" });
         }
