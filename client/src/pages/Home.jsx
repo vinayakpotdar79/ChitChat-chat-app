@@ -1,26 +1,28 @@
 import React, { useContext, useEffect, useState } from 'react';
 import API from '../services/api';
 import { AuthContext } from '../context/AuthContext';
+import Sidebar from '../components/sidebar/Sidebar';
 const Home = () => {
   const [msg, setMsg] = useState("");
   const {logout}=useContext(AuthContext)
+  const id=111
   useEffect(() => {
     async function getdata() {
       try {
-        const res = await API.get('/auth/home');
+        const res = await API.post(`/api/messages/send/:${id}`);
         setMsg(res.data);
       } catch (error) {
         console.log("Error fetching message",error); 
       }
     }
-   getdata()
+  //  getdata()
    
   }, []);
 
   return (
     <div>
-      {/* Display the value from the state variable */}
-      {msg ? msg : "Loading..."}
+      {/* {msg ? msg : "Loading..."} */}
+      <Sidebar/>
     </div>
   );
 };
