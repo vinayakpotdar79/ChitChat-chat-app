@@ -2,7 +2,7 @@ import User from "../model/User.js"
 
 export const getUsersForSidebar = async (req, res) => {
 	try {
-		const loggedInUserId = req.user._id;
+		const loggedInUserId = req.user.id;
 
 		const filteredUsers = await User.find({ _id: { $ne: loggedInUserId } }).select("-password");//get user without logged in user and with no password 
 
