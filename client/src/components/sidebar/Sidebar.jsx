@@ -1,3 +1,4 @@
+import Conversations from "./Conversations";
 import LogoutButton from "./LogoutButton";
 import Searchbar from "./Searchbar";
 
@@ -12,9 +13,7 @@ const Sidebar = () => {
       <Searchbar />
 
       <div className="my-3 border-t border-white/20" />
-
-          Conversations coming soon...
-
+      <Conversations/>
       <LogoutButton />
     </div>
   );

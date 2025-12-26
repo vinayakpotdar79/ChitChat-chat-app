@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import API from '../services/api';
 import { AuthContext } from '../context/AuthContext';
 import Sidebar from '../components/sidebar/Sidebar';
+import MessageContainer from '../components/messages/MessageContainer';
 const Home = () => {
   const [msg, setMsg] = useState("");
   const {logout}=useContext(AuthContext)
@@ -23,6 +24,7 @@ const Home = () => {
     <div>
       {/* {msg ? msg : "Loading..."} */}
       <Sidebar/>
+      <MessageContainer/>
     </div>
   );
 };
