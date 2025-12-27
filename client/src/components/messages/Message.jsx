@@ -8,8 +8,9 @@ const Message = ({ message }) => {
 	const fromMe = message.senderId === user._id;
 	const chatClassName = fromMe ? "chat-end" : "chat-start";
 	const profilePic = fromMe ? user.profilePic : selectedConversation?.profilePic;
-	const bubbleBgColor = fromMe ? "bg-blue-500" : "";
+	const bubbleBgColor = fromMe ? "bg-blue-500" : "bg-neutral-950";
 	const shakeClass = message.shouldShake ? "shake" : "";
+	
     const formattedTime = new Date(message.createdAt).toLocaleTimeString(
     "en-IN",
     {
