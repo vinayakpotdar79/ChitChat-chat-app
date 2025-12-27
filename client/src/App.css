@@ -1,5 +1,5 @@
 @import "tailwindcss";
-
+@plugin "daisyui"; 
 body {
 	background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("/image.png");
 	background-repeat: no-repeat;
