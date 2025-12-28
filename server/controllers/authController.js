@@ -8,7 +8,7 @@ export const register=async(req,res)=>{
 
     const user=await User.findOne({username})
     if(user)
-        res.status(200).json({message:"User already Exists."})
+        res.status(400).json({message:"User already Exists."})
     
     if (password !== confirmPassword) {
 		return res.status(400).json({ message: "Passwords don't match" });
