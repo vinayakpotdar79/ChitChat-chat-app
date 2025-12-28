@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { data, Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { loginUser } from "../services/authService";
-
+import toast from "react-hot-toast";
 const Login = () => {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
@@ -13,8 +13,13 @@ const Login = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		const data=await loginUser({username,password})
-		await login(data);
+	const res = await loginUser({username,password});
+	if (!res.success) {
+		return toast.error(res.message, { duration: 3000 });
+	}
+		toast.success("Login successful!");
+			console.log(res.data)
+			await login(res.data)
 	};
 
 	return (

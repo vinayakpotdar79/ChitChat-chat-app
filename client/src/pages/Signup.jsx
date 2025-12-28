@@ -3,7 +3,8 @@ import { useContext, useState } from "react";
 import GenderCheckbox from "./GenderPage";
 import { AuthContext } from "../context/AuthContext";
 import { FiEye, FiEyeOff } from "react-icons/fi";
-import { registerUser } from "../services/authService";
+import { registerUser,loginUser } from "../services/authService";
+import toast from "react-hot-toast";
 
 const SignUp = () => {
 	const [inputs, setInputs] = useState({
@@ -22,11 +23,23 @@ const SignUp = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		const data=await registerUser(inputs)
-		console.log("Registered successfully!");
-		await login(data)
-	};
 
+	const res = await registerUser(inputs);
+
+	if (!res.success) {
+		return toast.error(res.message, { duration: 3000 });
+	}
+		toast.success("Account created successfully!");
+
+		//login after register
+		const loginRes = await loginUser({
+		username: inputs.username,
+		password: inputs.password,
+		});
+		setTimeout(async()=>{
+	 	await login(res.data)
+		},2000)
+	};
 	return (
 		<div className="flex items-center justify-center min-h-screen px-4">
 			<div
@@ -57,7 +70,7 @@ const SignUp = () => {
 								w-full px-4 py-2
 								rounded-xl
 								bg-white/10 text-white
-								placeholder-gray-600
+								placeholder-gray-400
 								border border-white/20
 								focus:outline-none focus:ring-2 focus:ring-blue-400
 							"
@@ -80,7 +93,7 @@ const SignUp = () => {
 								w-full px-4 py-2
 								rounded-xl
 								bg-white/10 text-white
-								placeholder-gray-600
+								placeholder-gray-400
 								border border-white/20
 								focus:outline-none focus:ring-2 focus:ring-blue-400
 							"
